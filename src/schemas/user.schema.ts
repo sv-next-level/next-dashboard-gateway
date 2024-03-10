@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { brokerSchema } from "./broker.schema";
 
 export enum UserRoles {
   LOGS = "LOGS",
@@ -11,13 +12,13 @@ export enum UserRoles {
 })
 export class User {
   @Prop({ type: String, required: true })
-  name: String;
+  name?: String;
 
   @Prop({ type: String, required: true, unique: true })
-  email: String;
+  email?: String;
 
   @Prop({ type: Date })
-  emailVerified?: Date;
+  emailVerification?: Date;
 
   @Prop({ type: String })
   phone?: String;
@@ -31,17 +32,17 @@ export class User {
   @Prop({ type: String })
   password?: String;
 
-  @Prop([
-    {
-      type: String,
-      enum: Object.values(UserRoles),
-      default: UserRoles.USER,
-    },
-  ])
-  roles: [UserRoles];
+  @Prop({
+    type: [String],
+    enum: UserRoles,
+    default: [UserRoles.USER],
+  })
+  roles?: UserRoles[];
 
-  // brokers: [brokerSchema],
-  // currentBroker: { type: String },
+  @Prop({
+    type: [brokerSchema],
+  })
+  brokers?: (typeof brokerSchema)[];
 }
 
 export const userSchema = SchemaFactory.createForClass(User);

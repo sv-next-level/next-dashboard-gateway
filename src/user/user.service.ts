@@ -1,5 +1,5 @@
 import { Model } from "mongoose";
-import { User } from "@/user/user.schema";
+import { User } from "@/schemas/user.schema";
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 
@@ -8,8 +8,12 @@ export class UserService {
   constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
   async createNewUser(userData: User): Promise<User> {
-    const newUser = await this.userModel.create(userData);
-    return newUser;
+    try {
+      const newUser = await this.userModel.create(userData);
+      return newUser;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async findAllUsers(): Promise<User[]> {
