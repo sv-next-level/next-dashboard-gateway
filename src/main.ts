@@ -1,6 +1,6 @@
 import { NestFactory } from "@nestjs/core";
 import { ConfigService } from "@nestjs/config";
-import { INestApplication, Logger } from "@nestjs/common";
+import { INestApplication, Logger, ValidationPipe } from "@nestjs/common";
 
 import { AppModule } from "@/app.module";
 
@@ -8,6 +8,7 @@ async function bootstrap() {
   const logger: Logger = new Logger("main");
 
   const app: INestApplication<any> = await NestFactory.create(AppModule);
+  app.useGlobalPipes(new ValidationPipe());
   const configService: ConfigService<unknown, boolean> = app.get(ConfigService);
 
   const PORT: number = configService.get<number>("PORT");
