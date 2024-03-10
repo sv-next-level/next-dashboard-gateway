@@ -22,7 +22,7 @@ export class createUserDto {
 
   @IsOptional()
   @IsDate()
-  readonly emailVerification?: Date;
+  readonly email_verification?: Date;
 
   @IsOptional()
   @IsPhoneNumber("IN")
@@ -30,11 +30,11 @@ export class createUserDto {
 
   @IsOptional()
   @IsDate()
-  readonly phoneVerification?: Date;
+  readonly phone_verification?: Date;
 
   @IsOptional()
   @IsDate()
-  readonly twoFactorAuthentication?: Date;
+  readonly two_factor_authentication?: Date;
 
   @IsOptional()
   @IsString()
@@ -60,7 +60,7 @@ export class updateUserDto {
 
   @IsOptional()
   @IsDate()
-  readonly emailVerification?: Date;
+  readonly email_verification?: Date;
 
   @IsOptional()
   @IsPhoneNumber("IN")
@@ -68,11 +68,11 @@ export class updateUserDto {
 
   @IsOptional()
   @IsDate()
-  readonly phoneVerification?: Date;
+  readonly phone_verification?: Date;
 
   @IsOptional()
   @IsDate()
-  readonly twoFactorAuthentication?: Date;
+  readonly two_factor_authentication?: Date;
 
   @IsOptional()
   @IsString()

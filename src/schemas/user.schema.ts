@@ -18,16 +18,16 @@ export class User {
   email?: String;
 
   @Prop({ type: Date })
-  emailVerification?: Date;
+  email_verification?: Date;
 
   @Prop({ type: String })
   phone?: String;
 
   @Prop({ type: Date })
-  phoneVerification?: Date;
+  phone_verification?: Date;
 
   @Prop({ type: Date })
-  twoFactorAuthentication?: Date;
+  two_factor_authentication?: Date;
 
   @Prop({ type: String })
   password?: String;
