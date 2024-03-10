@@ -11,9 +11,8 @@ import { validate } from "@/config/env.validation";
 @Module({
   imports: [
     ConfigModule.forRoot({
-      // envFilePath: ".env.local",
-      // isGlobal: true,
-      // cache: true,
+      isGlobal: true,
+      cache: true,
       validate,
     }),
     UserModule,
@@ -34,12 +33,3 @@ import { validate } from "@/config/env.validation";
   providers: [AppService],
 })
 export class AppModule {}
-
-/**
- * 
-      `${process.env.DASHBOARD_MONGODB_URI}/${process.env.DASHBOARD_DATABASE_NAME}?${process.env.DASHBOARD_MONGODB_CONFIG}`
-      // ,
-      // {
-      //   connectionName: String(process.env.DASHBOARD_DATABASE_NAME),
-      // }
- */
